@@ -3,15 +3,10 @@
 
 ```
 var o={}
-o.ma={}
-ma.line
-ma.jump=/^<<< (.*)$|^MRK (.*)$|^### (.*)$/
-ma.code=/[^0-9A-Z!#$@*><_]{3}?[ \.=]/
-ma.commentout
 
 o.run=(text)=>{
- let d=text.replace(ma.commentout,'')
- o.lines=lex(d)
+ o.text=text
+ o.lines=lex(text)
  o.jumps=lexjump(o.lines)
  o.next(0) //
 }
