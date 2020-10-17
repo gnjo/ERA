@@ -43,6 +43,7 @@
  ////////////////////////
  function run(str){
   var o=EXP()
+  valuable(o.root) //r020 $00-$ZZ
   let a=lexsize(str)
   o.w=a.w
   o.h=a.h
@@ -116,6 +117,14 @@
   if(!/{(.*?)}/.test(obj))return obj;
   return _(_m(obj))
  }
+ 
+ function valuable(self){
+ if(!self)return console.warn('valuable() param1 need',self)
+ let a="01234567890abcdefghijklmnopqrstuvwxyz$_".split('').map(d=>d.toUpperCase()) 
+ ,len=a.length,j,i
+ ;for(j=0;j<len;j++)for(i=0;i<len;i++)self['$'+a[i]+a[j]]='';
+ return len*len
+}
  ////////////////////////
  //lex https://codepen.io/gnjo/pen/abZNKOp?editors=0010
  //lexjump 
@@ -266,3 +275,54 @@ Enter:13
  */
 }
 //<<<r012
+
+
+function CLR(color){
+ var o=EXP()
+ let ctx=o.offctx,w=o.w,h=o.h
+ if(!color)return ctx.clearRect(0,0,w,h)
+ ctx.fillStyle=color
+ ctx.fillRect(0,0,w,h)
+ //
+ ctx.restore(),ctx.save()
+}
+
+function CAP(name){
+ var o=EXP()
+ let offctx=o.offctx,w=o.w,h=o.h,cash=o.cash
+ let canvas = document.createElement('canvas')
+ let ctx = canvas.getContext('2d');
+ canvas.width = w,canvas.height = h
+ ctx.drawImage(offctx.canvas, 0, 0, canvas.width, canvas.height);
+ cash['CAP']=cash['$CAP']=canvas;
+ if(name) cash[name]=canvas
+ return canvas
+}
+
+function CAS(str){
+ //ZAP_CASH={}
+ var o=EXP(),cash=o.cash,time=performance.now()
+ let ma_v =/\.amr$|\.awb$|\.m4a$|\.mp4$|\.mp3$|\.wma$|\.aac$|\.mid$|\.midi$|\.ogg$|\.oga$|\.wav$|\.flac$/i
+ let ma_i =/\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/i
+ return Promise.all(str.split('\n').map(d=>get(d) ))
+  .then(d=>{ o.debug('cash time:'+(performance.now()-time) ) ;return d})
+ ;
+ function get(url){return new Promise((sol)=>{
+  let obj,f=()=>{cash[url]=cash[url.split('/').pop()]=obj,sol(url)}
+  if(ma_v.test(url)){
+   obj=document.createElement('video')
+   obj.onloadedmetadata=f/////////
+  }else{
+   obj=new Image()
+   obj.onload =f
+  }
+  if(!obj)return o.debug('NG> '+url),sol(url)
+  obj.onerror=()=>{o.debug('NG> '+url);sol(url) }
+  obj.crossOrigin='anonymous'////
+  obj.src=url ////
+ })}
+ ;
+ ////////////////
+}
+
+//<<<r020
