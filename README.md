@@ -9,9 +9,10 @@ r005 coded EXP entry function
 r010 coded IFJ MRK KEY WAI POL KEC EVL
 r011 coded test hard jump loop
 r012 coded MIM
-r013 coding CAS
-r020 coding ctx...
-r021 IMG CAP MES
+r013 coded CAS CLR CAP
+r014 coded valuable
+r020 coded ctx offctx 
+r021 IMG MES DRW
 r022 BGM SE
 ```
 
