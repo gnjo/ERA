@@ -1,4 +1,30 @@
-# ERA
+# EXP
+例外が少なくコアの小さなエンジン。
+
+```
+var o={}
+o.ma={}
+ma.line
+ma.jump=/^<<< (.*)$|^MRK (.*)$|^### (.*)$/
+ma.code=/[^0-9A-Z!#$@*><_]{3}?[ \.=]/
+ma.commentout
+
+o.run=(text)=>{
+ let d=text.replace(ma.commentout,'')
+ o.lines=lex(d)
+ o.jumps=lexjump(o.lines)
+ o.next(0) //
+}
+o.stop()
+o.next()
+o.isend()
+o.callfunc()
+lex()
+lexjump()
+
+```
+
+
 
 ```
 ERA`640x480
