@@ -147,6 +147,7 @@
    else return d
   })
  }
+ 
  function lexjump(ary){
   let ma_mark=/(MRK|###|<<<) (.*)(?:\n|$)/
   let obj={}
@@ -169,6 +170,7 @@ function MIM(tar,org){
  //console.log(tar,ZAP_THIS[tar])
  return tar;
 }
+
 function MRK(str){
  var o=EXP()
  //o.jumpback=o.readline+1 //???+1
@@ -176,6 +178,7 @@ function MRK(str){
  o.debug(`MRK ${str}:${o.readline}`)  
  return o.jumpback
 }
+
 function IFJ(str,chk){
  /*
 >>> #aaa,{$KEY==='A'}
@@ -196,6 +199,7 @@ function IFJ(str,chk){
  }
  return console.warn('IFJ dont reach',str,chk)
 }
+
 function EVL(str){
  return eval(str)
 }
