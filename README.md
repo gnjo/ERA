@@ -5,6 +5,7 @@
 r001 coded lex lexjump
 r002 coding run stop next isend
 r003 coding callfunc
+r005 coding EXP entry function
 r010 coding IFJ MRK KEY MES WAI
 r011 coding test hard jump loop
 r020 coding ctx...
