@@ -87,11 +87,11 @@
  }
 
  function callfunc(line){
+  var o=EXP()   
   o.stop()
   ;
   let f=line.slice(0,3),ary=_a(line.slice(4)),ch='$',self=o.root,r
   ;
-  //console.log(ary)
   o.debug(o.readline,line,ary)
   ;//
   if(!self[f])return o.next()
@@ -146,9 +146,9 @@
   let ma_eq=/([A-Z!#$@*><_][0-9A-Z!#$@*><_]{2})=(.*)(?:\n|$)/
   let ma_mark=/(MRK|###|<<<) (.*)(?:\n|$)/
   let ma_jump=/(IFJ|>>>) (.*)(?:\n|$)/
-  let a
   ;
   return _c(d).match(ma).map(d=>d.trim()).map(d=>{
+   let a   
    if(ma_dot.test(d))return a=d.match(ma_dot),(a[1]+' '+a[2]).trim()
    else if(ma_mark.test(d))return a=d.match(ma_mark),('MRK'+' '+a[2]).trim() //MIMの問題があるため、大本の関数へ
    else if(ma_jump.test(d))return a=d.match(ma_jump),('IFJ'+' '+a[2]).trim() //MIMの問題があるため、大本の関数へ 
