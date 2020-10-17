@@ -2,7 +2,7 @@
 例外が少なくコアの小さなエンジン。
 
 ```
-r001 coded lex lexjump
+r001 coded lex lexjump lexsize
 r002 coding run stop next isend
 r003 coding callfunc
 r005 coding EXP entry function
