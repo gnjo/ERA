@@ -17,52 +17,39 @@ r022 BGM SE
 ```
 
 ```
-var o={}
-
-o.run=(text)=>{
- o.text=text
- o.lines=lex(text)
- o.jumps=lexjump(o.lines)
- o.next(0) //
-}
-o.stop()
-o.next()
-o.isend()
-o.callfunc()
-lex()
-lexjump()
 
 ```
 
 ### 構文
 ```
-EXP`640x480 //size
-<<< #xyz //mark
+EXP({debug:console.log})
 
+EXP`640x320
+MIM >>>,IFJ
+MIM <<<,MRK
+MIM ***,WAI
+/////
+<<< #xyz //mark
+<<< #bbbb
 KEY //keywait ^v<>AB
 //keyjump
->>> #aaa,$KEY==='^' //return value -> $CMD
->>> #aaa,$KEY==='v'
->>> #aaa,$KEY==='<'
->>> #aaa,$KEY==='>'
->>> #aaa,$KEY==='A'
->>> #aaa,$KEY==='B'
-
+>>> #aaa,{$KEY==='^'} //return value -> $CMD
+>>> #aaa,{$KEY==='v'}
+>>> #aaa,{$KEY==='<'}
+>>> #aaa,{$KEY==='>'}
+>>> #xyz,{$KEY==='A'}
+>>> #xyz,{$KEY==='B'}
 *** 100 //wait 100ms
-
 MES. //multiline
 aaaaaa
 bbbbbb
 cc
 ...
-
-
 dddddd
 eee
 END //multiline end
 >>> #xyz,1 //loop
 >>> #xyz //same
-
 `
 ```
 
