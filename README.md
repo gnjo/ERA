@@ -2,6 +2,16 @@
 例外が少なくコアの小さなエンジン。
 
 ```
+r001 coded lex lexjump
+r002 coding run stop next isend
+r003 coding callfunc
+r010 coding IFJ MRK KEY MES WAI
+r011 coding test hard jump loop
+r020 coding ctx...
+
+```
+
+```
 var o={}
 
 o.run=(text)=>{
