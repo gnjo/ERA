@@ -23,8 +23,8 @@ let a
 ;
 return _c(d).match(ma).map(d=>d.trim()).map(d=>{
  if(ma_dot.test(d))return a=d.match(ma_dot),(a[1]+' '+a[2]).trim()
- else if(ma_mark.test(d))return a=d.match(ma_mark),('<<<'+' '+a[2]).trim()
- else if(ma_jump.test(d))return a=d.match(ma_jump),('>>>'+' '+a[2]).trim()  
+ else if(ma_mark.test(d))return a=d.match(ma_mark),('MRK'+' '+a[2]).trim() //MIMの問題があるため、大本の関数へ
+ else if(ma_jump.test(d))return a=d.match(ma_jump),('IFJ'+' '+a[2]).trim() //MIMの問題があるため、大本の関数へ 
  else if(ma_eq.test(d))return 'EVL'+' '+d  
  else return d
 })
