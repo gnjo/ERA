@@ -3,13 +3,16 @@
 
 ```
 r001 coded lex lexjump lexsize
-r002 coding run stop next isend
-r003 coding callfunc
-r005 coding EXP entry function
-r010 coding IFJ MRK KEY MES WAI
-r011 coding test hard jump loop
+r002 coded run stop next isend
+r003 coded callfunc
+r005 coded EXP entry function
+r010 coded IFJ MRK KEY WAI POL KEC EVL
+r011 coded test hard jump loop
+r012 coded MIM
+r013 coding CAS
 r020 coding ctx...
-
+r021 IMG CAP MES
+r022 BGM SE
 ```
 
 ```
