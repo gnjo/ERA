@@ -14,8 +14,9 @@ r014 coded valuable
 r020 coded ctx offctx 
 r021 coded IMG DRW
 r022 coded BGM SE
-r023 coding CTY
-r023 coding MES
+r023 coded COR FON roleColor
+r030 coding CTY
+r031 coding MES
 
 ```
 
