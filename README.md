@@ -19,7 +19,9 @@ r024 coded copyImage IMG
 r025 coded DRW setAnimCount setTimeCount
 r026 coded BGM SE bugfix
 r027 coded MES makepen
-r028 coding QUE
+r028 coded QUE
+r029 coding much over QUE
+issue font loaded check
 r030 coding LST TBL
 
 ```
