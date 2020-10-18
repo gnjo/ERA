@@ -326,3 +326,51 @@ function CAS(str){
 }
 
 //<<<r020
+function BGM(url){
+ var o=EXP()
+ o.bgm.src= o.cash[url].src||''
+ o.bgm.dataset.needsUpdate=true 
+ return url
+}
+function SE_(url){
+ var o=EXP()
+ o.se.src= o.cash[url].src||''
+ o.se.dataset.needsUpdate=true 
+ return url
+}
+function VOL(val,opt){
+ var o=EXP(),is=o.is
+ //volume 0.0 - 1.0
+ //VOL 0.5,se //target se other bgm
+ //VOL 0.5 //se and bgm
+ if(is.void(opt))return o.se.volume=val,o.bgm.volume=val
+ if(/^s/i.test(opt)) return o.se.volume=val
+ else  return o.bgm.volume=val
+}
+
+function roleColor(){
+ var o=EXP(),is=o.is
+ if(is.void(o.roleColor)) o.roleColor=0
+ o._roleColor++; 
+ let n=10,h=o._roleColor*n%360
+ return `hsl(${h},100%,70%)`
+}
+function FON(str){
+ var o=EXP()
+ let ctx=o.ctx
+ if(!str) return ctx.font
+ ctx.font=str
+ ctx.save()//
+ return ctx.font
+}
+function COR(str){
+ var o=EXP()
+ let ctx=o.ctx
+ if(!str) return ctx.fillStyle
+ ctx.fillStyle=str
+ ctx.save()//
+ return ctx.fillStyle
+}
+
+
+
