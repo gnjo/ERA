@@ -332,12 +332,14 @@ function BGM(url){
  o.bgm.dataset.needsUpdate=true 
  return url
 }
+
 function SE_(url){
  var o=EXP()
  o.se.src= o.cash[url].src||''
  o.se.dataset.needsUpdate=true 
  return url
 }
+
 function VOL(val,opt){
  var o=EXP(),is=o.is
  //volume 0.0 - 1.0
@@ -355,6 +357,7 @@ function roleColor(){
  let n=10,h=o._roleColor*n%360
  return `hsl(${h},100%,70%)`
 }
+
 function FON(str){
  var o=EXP()
  let ctx=o.ctx
@@ -363,6 +366,7 @@ function FON(str){
  ctx.save()//
  return ctx.font
 }
+
 function COR(str){
  var o=EXP()
  let ctx=o.ctx
