@@ -12,12 +12,21 @@ r012 coded MIM
 r013 coded CAS CLR CAP
 r014 coded valuable
 r020 coded ctx offctx 
-r021 coding IMG MES DRW
-r022 coding BGM SE
+r021 coded IMG DRW
+r022 coded BGM SE
+r023 coding CTY
+r023 coding MES
 
 ```
 
 ```
+CTY.
+酒場｜酒場です
+宿屋｜宿屋です。
+街外れ｜街外れ。
+,1,0,0  //cursor,ox,oy
+
+
 
 ```
 
@@ -53,5 +62,4 @@ END //multiline end
 >>> #xyz //same
 `
 ```
-
 
