@@ -559,7 +559,7 @@ async function QUE(str,question,cursor){
    ctx.drawImage(backup,0,0)
    oh=2
    //question
-   pen('Qestion',0+oh,'c')   
+   pen('Question',0+oh,'c')   
    pen(ary[0]||'',1+oh,'c')
    pen(ary[1]||'',2+oh,'c')
    pen(ary[2]||'',3+oh,'c')
