@@ -477,3 +477,69 @@ function DRW(name,time){
 
 //<<< r025
 
+function makepen(_ctx,_lineh,_incolor,_outcolor){
+ /*
+let pen=makepen(ctx,1.3,'#fff','#f26a')
+ctx.font='20px planes'
+;[0,1,2,3,4,5,6].map((d,i)=>{
+ pen('漢字あいうえを',i,'c')
+ if(i===3)pen('漢字あいうえを',i,'c',12)
+}) 
+ */
+ const incolor=_incolor||'#000'
+ const outcolor=_outcolor||'#888'
+ const ctx=_ctx
+ const lineh=_lineh
+ return function pen(text,line,lcr,blink){
+  //ctx=
+  let w=ctx.canvas.width,h=ctx.canvas.height,fh=parseInt(ctx.font),fw=fh/2
+  ,wpx=ctx.measureText(text).width,hpx=(fh*line+fh)*lineh ,wk,x
+  ;
+  let sp='漢',t=Array.from({length:blink}).map(d=>sp).join('')
+  wpx=ctx.measureText(t).width
+  ;
+  lcr=lcr||ctx.textAlign
+  lcr=lcr.charAt(0)
+  if(lcr==='l')ctx.textAlign='left',x=fw/2  
+  if(lcr==='c')ctx.textAlign='center',x=w/2
+  if(lcr==='r')ctx.textAlign='right',x=w-fw/2
+  if(blink){
+   ctx.fillStyle=outcolor
+   if(lcr==='l') ctx.fillRect(x-fw,hpx-fh+2,wpx+fw+x,fh)
+   if(lcr==='c') ctx.fillRect(w/2-wpx/2-fw/2,hpx-fh+2,wpx+fw,fh)
+   if(lcr==='r') ctx.fillRect(x-wpx-fw/2,hpx-fh+2,wpx+fw,fh)
+  }
+  ctx.globalAlpha=0.9  
+  ctx.fillStyle=incolor
+  ctx.fillText(text,x,hpx)
+  return ctx.restore(),ctx.save()
+ } 
+}
+
+async function MES(str){
+ var o=EXP()
+ //console.log(str,question,cursor)
+ let ctx=o.ctx,w=o.w,h=o.h
+ let backup=o.copyImage(o.canvas)
+ let empty=Array.from({length:5}).map(d=>'')
+ let ary=empty.concat(str.split('\n')).concat(empty)
+ let max=ary.map(d=>d.length).reduce((a,b)=>Math.max(a,b))
+ let pen=makepen(ctx,1.3,'#fff','#f26a')
+ let pos=1,oh=5
+  
+  for(pos=1;pos<ary.length-5;pos++){
+   ctx.drawImage(backup,0,0)
+   pen(ary[pos+0],0+oh,'c')
+   pen(ary[pos+1],1+oh,'c')
+   pen(ary[pos+2],2+oh,'c')
+   pen(ary[pos+3],3+oh,'c')
+   pen(ary[pos+4],4+oh,'c')  
+   await KEY()
+   await WAI(1000/60)
+  }
+  //mode question
+  return 
+}
+
+//<<< r027
+
