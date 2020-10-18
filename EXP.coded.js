@@ -543,3 +543,44 @@ async function MES(str){
 
 //<<< r027
 
+async function QUE(str,question,cursor){
+ var o=EXP()
+ //console.log(str,question,cursor)
+ let ctx=o.ctx,w=o.w,h=o.h
+ let backup=o.copyImage(o.canvas)
+ //let empty=Array.from({length:5}).map(d=>'')
+ let ary=str.split('\n') //empty.concat(str.split('\n')).concat(empty)
+ let ansary=question.split('\n')
+ let max=ansary.map(d=>d.length).reduce((a,b)=>Math.max(a,b))
+ let pen=makepen(ctx,1.3,'#fff','#f26a')
+ let pos=cursor||0,oh=2,key,nmax=ansary.length
+ let keyse=o.se.src  
+  for(;key!='A';){
+   ctx.drawImage(backup,0,0)
+   oh=2
+   //question
+   pen('Qestion',0+oh,'c')   
+   pen(ary[0]||'',1+oh,'c')
+   pen(ary[1]||'',2+oh,'c')
+   pen(ary[2]||'',3+oh,'c')
+   
+   oh=2+ary.length+2
+   //ans
+   //選択肢が３０ほど大量にあった場合の対応は？
+   pen(ansary[0]||'',0+oh,'c',pos%nmax===0?max:0)
+   pen(ansary[1]||'',1+oh,'c',pos%nmax===1?max:0)
+   pen(ansary[2]||'',2+oh,'c',pos%nmax===2?max:0)
+   pen(ansary[3]||'',3+oh,'c',pos%nmax===3?max:0)
+   pen(ansary[4]||'',4+oh,'c',pos%nmax===4?max:0)
+   SE_(keyse)
+   key=await KEY()
+   if(key==='^') pos+=ansary.length-1
+   if(key==='v') pos++   
+   await WAI(1000/60)
+  }
+  return pos
+  //mode question
+  //return 
+}
+//<<< r028
+
