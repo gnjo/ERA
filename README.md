@@ -18,6 +18,8 @@ r023 coded COR FON roleColor
 r024 coded copyImage IMG
 r025 coded DRW setAnimCount setTimeCount
 r026 coded BGM SE bugfix
+r027 coded MES
+
 r030 coding LST TBL
 r031 coding MES
 
