@@ -372,5 +372,6 @@ function COR(str){
  return ctx.fillStyle
 }
 
+//<<< r023
 
 
