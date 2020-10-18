@@ -12,10 +12,12 @@ r012 coded MIM
 r013 coded CAS CLR CAP
 r014 coded valuable
 r020 coded ctx offctx 
-r021 coded IMG DRW
+r021 coded IMG
 r022 coded BGM SE
 r023 coded COR FON roleColor
-r030 coding CTY
+r024 coded o.copyImage IMG
+r024 coding DRW
+r030 coding LST TBL
 r031 coding MES
 
 ```
@@ -32,7 +34,7 @@ LST.
 ,0,0  //ox,oy//基本は中央表示
 END
 //基本色の0.5がオフカラー。
-CEL.
+TBL.
 //同じ構文だが、上下左右に｜｜を移動する。
 
 
