@@ -457,7 +457,7 @@ function DRW(name,time){
  let f=(i)=>{
   let alpha=(i+1)/frames
   //o.debug(alpha)
-  ctx.globalAlpha=alpha
+  ctx.globalAlpha=alpha*0.7 //
   if(is.color(name)){
    ctx.fillStyle=name
    ctx.fillRect(0,0,w,h)
