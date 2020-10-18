@@ -184,7 +184,6 @@ ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 return canvas;
 }
 
-
 })(this); 
 
 //>>>r001
@@ -291,7 +290,6 @@ Enter:13
 */
 }
 //<<<r012
-
 
 function CLR(color){
 var o=EXP()
@@ -409,7 +407,6 @@ return url
 }
 
 //<<< r024
-
 
 function setTimecount(caller,dt,count){return new Promise(sol=>{
  //if count 10 is 0 - 9
