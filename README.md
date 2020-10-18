@@ -16,7 +16,7 @@ r021 coded IMG
 r022 coded BGM SE
 r023 coded COR FON roleColor
 r024 coded o.copyImage IMG
-r024 coding DRW
+r025 coding DRW
 r030 coding LST TBL
 r031 coding MES
 
