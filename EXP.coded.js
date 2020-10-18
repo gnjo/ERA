@@ -342,15 +342,15 @@ function get(url){return new Promise((sol)=>{
 //<<<r020
 function BGM(url){
 var o=EXP()
-o.bgm.src= o.cash[url].src||''
-o.bgm.dataset.needsUpdate=true 
+if(!o.cash[url]) o.bgm.src=''
+else o.bgm.src= o.cash[url].src||'',o.bgm.dataset.needsUpdate=true 
 return url
 }
 
 function SE_(url){
 var o=EXP()
-o.se.src= o.cash[url].src||''
-o.se.dataset.needsUpdate=true 
+if(!o.cash[url]) o.se.src=''
+else o.se.src= o.cash[url].src||'',o.se.dataset.needsUpdate=true 
 return url
 }
 
