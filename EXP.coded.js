@@ -410,3 +410,73 @@ return url
 
 //<<< r024
 
+
+function setTimecount(caller,dt,count){return new Promise(sol=>{
+ //if count 10 is 0 - 9
+ let i=0
+ count=count||0
+ lop()
+ ///
+ function lop(){return setTimeout(()=>{
+  if(count<=i)return sol(i);
+  caller(i),i++,lop()
+ },dt)}
+})}//
+
+var setTimeCount=setTimecount
+function setAnimcount(caller,count,opt){return new Promise(sol=>{
+ //if count 10 is 0 - 9
+ let i=0,fi=0,ret
+ count=count||0,opt=opt||1
+ lop()
+ ///
+ function lop(){
+  if(count<=i)return sol(ret)
+  requestAnimationFrame(lop)
+  if(fi%opt===0) ret=caller(i),i++
+  fi++
+ }
+ /*
+ await setAnimcount((i)=>{
+  fn.q('pre').textContent=i
+  //if(i%2===0) ... //30fps
+  //if(i%3===0) ... //20fps
+  //4 15fps
+  //5 12fps
+  //6 10fps
+ },500,6) 
+ */
+})}//
+var setAnimCount=setAnimcount
+
+function DRW(name,time){ 
+ var o=EXP()
+ o.is.color=(d)=>{return /rgb\(|rgba\(|hsl\(|hsla\(|#/i.test(d)}
+ //time... afterwork
+ let is=o.is,ctx=o.ctx,w=o.w,h=o.h,cash=o.cash
+ ,fadein=time>0
+ ,frames= ~~(Math.abs(time)/(1000/60))||1
+ //console.log('frames',frames)
+ let f=(i)=>{
+  let alpha=(i+1)/frames
+  //o.debug(alpha)
+  ctx.globalAlpha=alpha
+  if(is.color(name)){
+   ctx.fillStyle=name
+   ctx.fillRect(0,0,w,h)
+   ctx.restore(),ctx.save()
+   return ctx.canvas
+  }else if(cash[name]){
+   let img=cash[name]
+   ctx.drawImage(img,0,0,w,h)
+   ctx.restore(),ctx.save()   
+   return ctx.canvas
+  }
+  console.warn('DRW img notfound',name)
+  return ctx.canvas
+ }
+ return setAnimCount(f,frames,1)
+}
+
+//<<< r025
+
