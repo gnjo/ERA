@@ -521,7 +521,7 @@ function DRW(name,time){
   //o.debug(alpha)
   ctx.globalAlpha=alpha
   if(is.color(name)){
-   ctx.fillStyle=makecolor(color)//r030
+   ctx.fillStyle=makecolor(name)//r030
    ctx.fillRect(0,0,w,h)
    ctx.restore(),ctx.save()
    return ctx.canvas
