@@ -51,7 +51,12 @@ function run(str){
  o.lines=lex(str)
  o.jumps=lexjump(o.lines)
  ///
- if(!o.canvas) o.canvas=gameCanvas(o.w,o.h)
+ if(o.canvas){
+  //キャンバスがある場合はサイズ指定を無効とする。
+  o.w=o.canvas.width,o.h=o.canvas.height
+ }else{
+  o.canvas=gameCanvas(o.w,o.h)  
+ }
  o.ctx=o.canvas.getContext('2d')
  o.se=gameSE()
  o.bgm=gameBGM()
