@@ -20,6 +20,7 @@ r025 coded DRW setAnimCount setTimeCount
 r026 coded BGM SE bugfix
 r027 coded MES makepen
 r028 coded QUE
+r029 coded DRW issue DRW //no param, ctx.clearRect
 //
 r030 coding EXP on three.js
 //
