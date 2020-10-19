@@ -47,7 +47,7 @@ TBL.
 ### 構文
 ```
 EXP({debug:console.log})
-
+//EXP({canvas:canvas}) //先にcanvasを指定するとそのcanvasに描く。
 EXP`640x320
 MIM >>>,IFJ
 MIM <<<,MRK
