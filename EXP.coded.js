@@ -51,7 +51,7 @@ function run(str){
  o.lines=lex(str)
  o.jumps=lexjump(o.lines)
  ///
- o.canvas=gameCanvas(o.w,o.h)
+ if(!o.canvas) o.canvas=gameCanvas(o.w,o.h)
  o.ctx=o.canvas.getContext('2d')
  o.se=gameSE()
  o.bgm=gameBGM()
