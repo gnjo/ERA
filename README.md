@@ -77,3 +77,42 @@ END //multiline end
 `
 ```
 
+```
+EXP`640x320
+MIM >>>,IFJ
+MIM <<<,MRK
+MIM ***,WAI
+/////
+
+DUN.
+
+END
+/////
+<<< #dung
+
+KEY
+MOV {$KEY}
+>>> #camp,{$KEY==='B'}
+>>> {'#'+$MOV.g} //#ア
+>>> {'#'+$MOV.addr} //#F00X00Y00
+>>> #dung
+/////
+
+<<< #camp
+
+
+>>> #dung,{#KEY==='B'}
+>>> #camp
+`
+
+```
+
+
+
+
+
+
+
+
+
+
