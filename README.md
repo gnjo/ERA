@@ -94,7 +94,7 @@ KEY
 MOV {$KEY}
 >>> #camp,{$KEY==='B'}
 >>> {'#'+$MOV.g} //#ア
->>> {'#'+$MOV.addr} //#F00X00Y00
+>>> {'#'+$MOV.addr} //#F00X00Y00.N
 >>> #dung
 /////
 
