@@ -132,8 +132,7 @@ function draw(ctx){
  ctx.restore(),ctx.save(),ctx.clearRect(0,0,w,h)
  //
  ctx.fillStyle='#0f0'
- let time=performance.now().toFixed(3) +'mes'
- ctx.fillText(time,100,100)
+ ctx.fillText(performance.now().toFixed(3),100,100)
 }
 
 ```
