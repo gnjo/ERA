@@ -57,12 +57,15 @@ function run(str){
  }else{
   o.canvas=gameCanvas(o.w,o.h)  
  }
- o.ctx=o.canvas.getContext('2d')
+ o.ctx=o.canvas.getContext('2d') 
  o.se=gameSE()
  o.bgm=gameBGM()
  o.offcanvas=document.createElement('canvas')
  o.offcanvas.width=o.w,o.offcanvas.height=o.h
  o.offctx=o.offcanvas.getContext('2d')
+ ///font
+ let fsize=~~(o.h/20)
+ o.ctx.font=o.offctx.font=`${fsize}px exp` //r029
  ///
  o.debug(o)
  o.next(0) 
