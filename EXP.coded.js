@@ -121,13 +121,27 @@ function _t(d){return d.replace(/^[ \r\n\t\uFEFF\xA0]+|[ \t\r\n\uFEFF\xA0]+$/g, 
 //numbalable
 function _n(d){return /^[+,-]?([1-9]\d*|0)(\.\d+)?$/.test(d)?parseFloat(d):d}
 function _(d){return eval(d)}
+ 
+ 
+function _ms(obj){return obj.replace(/{(.*?)}/g,(d,dd)=>{return _(dd) }) }
+function _mv(obj){return obj.replace(/{(.*?)}/g,(d,dd)=>{return dd}) }
+//{xyz}//算術指示がある場合はevalする  
+function _m2(obj){
+
+ //eval issue r030
+ if(/^{(.*?)}$/.test(obj))return _(_mv(obj)) //値の可能性
+ else if(/{(.*?)}/.test(obj))return _ms(obj) //文字列
+ else return obj; 
+ 
+}
+/*
 function _m(obj){return obj.replace(/{(.*?)}/g,(d,dd)=>{return dd}) }
 //{xyz}//算術指示がある場合はevalする  
 function _m2(obj){
  if(!/{(.*?)}/.test(obj))return obj;
  return _(_m(obj))
 }
-
+*/
 function valuable(self){
 if(!self)return console.warn('valuable() param1 need',self)
 let a="01234567890abcdefghijklmnopqrstuvwxyz$_".split('').map(d=>d.toUpperCase()) 
