@@ -318,15 +318,20 @@ if(name) cash[name]=canvas
 return canvas
 }
 
+//fontload r029 always font-family exp
 function CAS(str){
 //ZAP_CASH={}
 var o=EXP(),cash=o.cash,time=performance.now()
 let ma_v =/\.amr$|\.awb$|\.m4a$|\.mp4$|\.mp3$|\.wma$|\.aac$|\.mid$|\.midi$|\.ogg$|\.oga$|\.wav$|\.flac$/i
 let ma_i =/\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/i
+let ma_f =/\.woff$|\.otf$|\.ttf$|\.eot$/i //fontload
 return Promise.all(str.split('\n').map(d=>get(d) ))
  .then(d=>{ o.debug('cash time:'+(performance.now()-time) ) ;return d})
 ;
 function get(url){return new Promise((sol)=>{
+ //fontload
+ if(ma_f.test(url))return sol(fontload(url))
+ //fontload
  let obj,f=()=>{cash[url]=cash[url.split('/').pop()]=obj,sol(url)}
  if(ma_v.test(url)){
   obj=document.createElement('video')
@@ -341,7 +346,39 @@ function get(url){return new Promise((sol)=>{
  obj.src=url ////
 })}
 ;
-////////////////
+function fontload(url){return new Promise(sol=>{
+ let head=document.querySelector('head')
+ let linktype=url.split('.').pop().toLowerCase() //
+ let map={
+  'otf':'opentype'
+  ,'ttf':'truetype'
+  ,'woff':'woff'
+  ,'eot':'eot'  
+ }
+ let type=map[linktype]||'truetype'
+ 
+ let fn={}
+ fn.i3=(d)=>{
+  if(typeof d !=='string') return d
+  var el=document.createElement('table'); el.innerHTML=d.trim();
+  var me=el.childNodes[0]
+  el=void 0;
+  return me
+ }
+ 
+let link=`<link rel="preload" href="${url}" as="font" type="font/${linktype}" crossorigin="anonymous">`
+let style=`<style>@font-face {font-family:exp; src: url('${url}') format('${type}');}</style>`
+let ell=fn.i3(link)
+let els=fn.i3(style)
+ell.onload=()=>{ 
+ return sol(url)
+}
+ell.onerror=()=>{sol(url) }
+ document.head.appendChild(ell) //
+ document.head.appendChild(els)
+ 
+})} 
+ 
 }
 
 //<<<r020
