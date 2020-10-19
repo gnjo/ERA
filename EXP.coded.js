@@ -199,7 +199,7 @@ canvas.width = img.width
 canvas.height = img.height;
 if(color){
  //colorを指示すれば、マスク化。しなければコピーのみ。
- ctx.fillStyle = makecolor(color);///r030
+ ctx.fillStyle = makecolor(color,ctx);///r030
  ctx.fillRect(0, 0, canvas.width, canvas.height);
  ctx.globalCompositeOperation = 'destination-in';
 }
@@ -318,7 +318,7 @@ function CLR(color){
 var o=EXP()
 let ctx=o.offctx,w=o.w,h=o.h
 if(!color)return ctx.clearRect(0,0,w,h)
-ctx.fillStyle=makecolor(color)//r030
+ctx.fillStyle=makecolor(color,ctx)//r030
 ctx.fillRect(0,0,w,h)
 //
 ctx.restore(),ctx.save()
@@ -521,7 +521,7 @@ function DRW(name,time){
   //o.debug(alpha)
   ctx.globalAlpha=alpha
   if(is.color(name)){
-   ctx.fillStyle=makecolor(name)//r030
+   ctx.fillStyle=makecolor(name,ctx)//r030
    ctx.fillRect(0,0,w,h)
    ctx.restore(),ctx.save()
    return ctx.canvas
