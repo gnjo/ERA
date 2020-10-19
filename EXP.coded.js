@@ -54,6 +54,7 @@ function run(str){
  if(o.canvas){
   //キャンバスがある場合はサイズ指定を無効とする。
   o.w=o.canvas.width,o.h=o.canvas.height
+  o.canvas.style='image-rendering:pixelated;' //拡大時にはドットで。
  }else{
   o.canvas=gameCanvas(o.w,o.h)  
  }
