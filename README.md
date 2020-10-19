@@ -108,7 +108,35 @@ MOV {$KEY}
 ```
 
 
+### note three.jsの2dと3dについて
+```
+//一番の問題は2d側のキャンバスサイズは、縦横比を柔軟に決めると体裁が崩れる事。
+//統一的に扱うために2d側に依存したサイズにする必要がある。
 
+var canvas3d=document.querySelector('canvas')
+var {scene,camera,ctx2d,update3d,update2d}=build(canvas3d) //or build(640,360) //addChild the dom
+
+//init()
+//animate()
+
+function animate(){
+ requestAnimationFrame(animate)
+ ,update3d()
+ ,draw(ctx2d)
+ ,update2d()
+}
+
+function draw(ctx){
+//2d world
+ let w=ctx.canvas.widith,h=ctx.canvas.height
+ ctx.restore(),ctx.save(),ctx.clearRect(0,0,w,h)
+ //
+ ctx.fillStyle='#0f0'
+ let time=performance.now().toFixed(3) +'mes'
+ ctx.fillText(time,100,100)
+}
+
+```
 
 
 
