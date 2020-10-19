@@ -499,6 +499,8 @@ function DRW(name,time){
  ,fadein=time>0
  ,frames= ~~(Math.abs(time)/(1000/60))||1
  //console.log('frames',frames)
+ if(!name) ctx.clearRect(0,0,w,h),ctx.canvas //r029
+ //
  let f=(i)=>{
   let alpha=(i+1)/frames
   //o.debug(alpha)
