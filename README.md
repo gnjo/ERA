@@ -138,7 +138,13 @@ function draw(ctx){
 ```
 
 
+```
+//究極的にはcameraと3d側のキャンバスがあればいい。
 
+let a=build(init,update2d,update3d)
+a.animate()
+
+```
 
 
 
