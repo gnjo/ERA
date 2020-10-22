@@ -551,7 +551,7 @@ ctx.font='20px planes'
  const incolor=_incolor||'#000'
  const outcolor=_outcolor||'#888'
  const ctx=_ctx
- const lineh=_lineh
+ const lineh=_lineh||1.0
  return function pen(text,line,lcr,blink){
   //ctx=
   let w=ctx.canvas.width,h=ctx.canvas.height,fh=parseInt(ctx.font),fw=fh/2
