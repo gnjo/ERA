@@ -24,6 +24,7 @@ r029 coded DRW issue DRW //no param, ctx.clearRect
 //
 r030 coding EXP on three.js
 //
+r031 coded issue makepen lineh default 1.0
 r040 coding much over QUE
 issue font loaded check
 r041 coding LST TBL
