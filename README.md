@@ -111,3 +111,29 @@ MOV {$KEY}
 `
 
 ```
+
+### note
+```
+//できることを最小にした三次元ダンジョン
+
+async function caller(ev){
+ //ev.type ev.addr ev.info ev.ctx ev.order ev.obj
+ if(ev.type==='init')return await init(ev)
+ if(ev.type==='before')return await before(ev) //walk before
+ if(ev.type==='after')return await after(ev) //walk after
+}
+
+dung
+.set({canvas:document.querySelector('canvas'),keycall:keycall })
+.add(fr1)
+.add(fr2)
+.add(fr3)
+.add(fr4)
+.run(caller)
+
+```
+
+
+
+
+
