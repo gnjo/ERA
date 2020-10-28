@@ -219,6 +219,27 @@ order.getminimap=order.getMinimap=(num,footflg)=>{
 }
 ;
 
+order.isFloor=order.isfloor=(num)=>{
+ num=num||'F00'
+ //let floors=mock3d.floors
+ let s=(/^F/.test(num))?num: 'F'+('00'+num).slice(-2)
+ ;
+ //console.log(s);
+ let ret= floors.filter(d=>(d.name===s)).length
+ //console.log(ret)
+ return ret
+}
+
+order.getInfo=order.getinfo=()=>{
+ let p=mover.getp()
+ let f=p.f,len=p.x+p.y*20
+ //console.log(f,len,floorsobj)
+ let info={}
+ if(order.isfloor(f)) info=floorsobj.filter(d=>d.number===f).pop().data[len]
+ return info;
+}
+
+
 /////////////////////////////////
 function DUNG(){
  //run only
