@@ -156,6 +156,23 @@ function plane2d(renderer,_canvas){
 }
 ///////////////////////////////////////
 
+function resize() {
+  // サイズを取得
+  let asp=16/9
+  let flg=window.innerWidth < window.innerHeight*asp
+  if(flg){
+   width = window.innerWidth
+   height =width*(1/asp)
+  }else{
+   height=window.innerHeight
+   width=height*asp
+  }
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+}
+
 
 //loader=new THREE.TextureLoader()
 ///////////////////////////////////
@@ -244,6 +261,8 @@ order.getInfo=order.getinfo=()=>{
 function DUNG(){
  //run only
   init()
+  resize()
+  window.addEventListener('resize',resize)
   mover.keyevent=false // 
   animate()
 }
