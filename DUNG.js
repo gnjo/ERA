@@ -40,7 +40,7 @@ function init(){
  scene = new THREE.Scene();
  //scene.fog = new THREE.Fog(0x00ff00, 100,100*2);//
  //console.log(canvas3d)
- canvas3d=canvas3d||gameCanvas(ww,hh)
+ canvas3d=canvas3d||gameCanvas(ww,hh,'resizenone')
  let canvas=canvas3d
  renderer = new THREE.WebGLRenderer({antialias: true,canvas:canvas});
  renderer.setClearColor(0x000000,1)
