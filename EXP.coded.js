@@ -221,9 +221,10 @@ return tar;
 function MRK(str){
 var o=EXP()
 //o.jumpback=o.readline+1 //???+1
-o.jumpback=o.readline
+//o.jumpback=o.readline
 o.debug(`MRK ${str}:${o.readline}`)  
-return o.jumpback
+//return o.jumpback
+ return o.readline //jumpback is IFJ
 }
 
 function IFJ(str,chk){
@@ -238,7 +239,8 @@ if(is.void(chk)) chk=1
 if(!chk)return
 if(/^#/.test(str)){
  o.debug('IFJ hit',str,o.jumps[str])
- if(o.jumps[str])return o.readline=o.jumps[str]
+ //if(o.jumps[str])return o.readline=o.jumps[str]
+ if(o.jumps[str])return o.jumpback=o.readline,o.readline=o.jumps[str] //jumpback issue
  return;
 }else if(is.number(str)){
  //number
