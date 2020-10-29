@@ -550,7 +550,7 @@ ctx.font='20px planes'
  if(i===3)pen('漢字あいうえを',i,'c',12)
 }) 
  */
- const incolor=_incolor||'#000'
+ const incolor=_incolor||'#000e'
  const outcolor=_outcolor||'#888'
  const ctx=_ctx
  const lineh=_lineh||1.0
@@ -573,7 +573,7 @@ ctx.font='20px planes'
    if(lcr==='c') ctx.fillRect(w/2-wpx/2-fw/2,hpx-fh+2,wpx+fw,fh)
    if(lcr==='r') ctx.fillRect(x-wpx-fw/2,hpx-fh+2,wpx+fw,fh)
   }
-  ctx.globalAlpha=0.9  
+  //ctx.globalAlpha=0.9  
   ctx.fillStyle=incolor
   ctx.fillText(text,x,hpx)
   return ctx.restore(),ctx.save()
