@@ -67,6 +67,7 @@ function run(str){
  ///font
  let fsize=~~(o.h/20)
  o.ctx.font=o.offctx.font=`${fsize}px exp` //r029
+ o.ctx.save() //r031
  ///
  o.debug(o)
  o.next(0) 
