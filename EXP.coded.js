@@ -666,3 +666,59 @@ function makecolor(c,ctx){
  return color
 }
 
+//<<< r030
+//racekey
+async function KEY2(){
+ //keypress and mouse 
+ let ary=[]
+ 
+ function clickA(){return new Promise(sol=>{
+  let dom=document.documentElement;
+  let key='A'
+  dom.onclick=()=>{sol(key),dom.onclick=void 0}
+ })}
+ ;
+ function clickB(){return new Promise(sol=>{
+  let dom=document.documentElement;
+  let key='B'
+  dom.oncontextmenu=function (ev){ev.preventDefault(),sol(key),dom.oncontextmenu=void 0}
+ })}
+ 
+ async function moveArrow(){
+  
+  let ev=await getpos()
+  //console.log(ev.x,ev.y)
+  await new Promise(sol=>setTimeout(sol,100))
+  let ev2=await getpos()
+  //console.log(ev2.x,ev2.y)
+  let dx=ev2.x-ev.x,absx=Math.abs(dx)
+  let dy=ev2.y-ev.y,absy=Math.abs(dy)
+  let key='^'
+  //console.log(dx,dy)
+  if(absx>absy&&dx>0) key='>'
+  else if(absx>absy&&dx<0) key='<'
+  else if(absx<absy&&dy>0) key='v'
+  else if(absx<absy&&dy<0) key='^'
+  return key;
+  ;
+  function getpos(){return new Promise(sol=>{
+  let dom=document.documentElement;
+  dom.onmousemove=(ev)=>{ sol(ev),dom.onmousemove=void 0} 
+  })}
+  
+ }
+ 
+ ary.push(moveArrow())
+ ary.push(clickA())
+ ary.push(clickB())
+ ary.push(KEY())
+ return Promise.race(ary).then(key=>{
+//  console.log(key)
+//  fn.q('pre').textContent=key  
+  return key
+ })
+ //return <>^vAB
+}
+
+///<<< r031
+
