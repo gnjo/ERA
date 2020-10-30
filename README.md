@@ -134,6 +134,31 @@ dung
 ```
 
 
+```
+//cashのデータ仕様
+
+abcd.csv
+//aaa, ... not read
+//aaa
+key,name,desc,other1,other2,other3
+key1,na1,de1,ot1,ot2,ot3
+...
+...
+
+
+CAS.
+abcd.csv
+END
+
+var o=EXP()
+let obj=o.cash['abcd.csv'];
+
+let r=obj['key1']
+r.key,r.name,r.desc,r.other1,r.other2,r.other3
+
+```
+
+
 
 
 
