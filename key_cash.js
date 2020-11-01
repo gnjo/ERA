@@ -1,12 +1,57 @@
 
 var cashloading=1,cash={}
 
-function KEY(){
+$KEC=KEC()
+function KEY(map){return new Promise(sol=>{
+let dom=document.documentElement,del=()=>dom.onkeydown=void 0;
+let map=inverseObject($KEC)
+dom.onkeydown=function(ev){ 
+ if(map[ev.which]) del(),sol(map[ev.which])
 }
-function KEC(){
+function inverseObject (obj, keyIsNumber) {
+ return Object.keys(obj).reduceRight(function (ret, k) {
+  return (ret[obj[k]] = keyIsNumber ? parseInt(k, 10) : k, ret);
+ }, {});
 }
-function CAS(){
+})}
+
+//$KEC=KEC(38,40,37,39,13,32)
+function KEC(...ary){
+//var o=EXP()
+ary=ary||[87,83,65,68,69,81]
+let map={}
+map['^']=ary[0]||87 //w
+map['v']=ary[1]||83 //s
+map['<']=ary[2]||65 //a
+map['>']=ary[3]||68 //d
+map['A']=ary[4]||69 //e
+map['B']=ary[5]||81 //q
+//o.debug('keyconfig',ary,map)//,map,inverseObject(map))
+return map
+/*
+ArrowUp:38
+ArrowDown:40
+ArrowLeft:37
+ArrowRight:39
+KeyX:88
+KeyZ:90
+KeyW:87
+KeyA:65
+KeyS:83
+KeyD:68
+KeyJ:74
+KeyK:75
+KeyE:69
+KeyQ:81
+KeyI:73
+KeyU:85
+KeyO:79
+Space:32
+Enter:13
+*/
 }
+//<<<r012
+
 
 CAS(`
 https://gnjo.github.io/mock3d/bg/bar.jpg
