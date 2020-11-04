@@ -23,6 +23,9 @@ o.isend=isend
 o.debug=()=>{ }
 o.callfunc=callfunc
 o.run=run
+//
+o.makepen=makepen
+o.copyImage=o.copyimage=destcolor 
 //o.cash={}
 //o.canvas //canvas
 //o.ctx //o.canvas.getContext('2d')
@@ -45,30 +48,8 @@ root.EXP=EXP
 function run(str){
  var o=EXP()
  valuable(o.root) //r020 $00-$ZZ
-// let a=lexsize(str)
-// o.w=a.w
-// o.h=a.h
  o.lines=lex(str)
  o.jumps=lexjump(o.lines)
- ///
-// if(o.canvas){
-  //キャンバスがある場合はサイズ指定を無効とする。
-//  o.w=o.canvas.width,o.h=o.canvas.height
-//  o.canvas.style='image-rendering:pixelated;' //拡大時にはドットで。
-// }else{
-//  o.canvas=gameCanvas(o.w,o.h)  
-// }
-// o.ctx=o.canvas.getContext('2d') 
-// o.se=gameSE()
-// o.bgm=gameBGM()
-// o.offcanvas=document.createElement('canvas')
-// o.offcanvas.width=o.w,o.offcanvas.height=o.h
-// o.offctx=o.offcanvas.getContext('2d')
- ///font
-// let fsize=~~(o.h/20)
-// o.ctx.font=o.offctx.font=`${fsize}px exp` //r029
-// o.ctx.save() //r031
- ///
  o.debug(o)
  o.next(0) 
  return o
@@ -207,7 +188,64 @@ if(color){
 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 return canvas;
 }
-
+ 
+function makepen(_ctx,_lineh,_incolor,_outcolor){
+ /*
+let pen=makepen(ctx,1.3,'#fff','#f26a')
+ctx.font='20px planes'
+;[0,1,2,3,4,5,6].map((d,i)=>{
+ pen('漢字あいうえを',i,'c')
+ if(i===3)pen('漢字あいうえを',i,'c',12)
+}) 
+ */
+ const incolor=_incolor||'#000e'
+ const outcolor=_outcolor||'#888'
+ const ctx=_ctx
+ const lineh=_lineh||1.0
+ return function pen(text,line,lcr,blink){
+  //ctx=
+  let w=ctx.canvas.width,h=ctx.canvas.height,fh=parseInt(ctx.font),fw=fh/2
+  ,wpx=ctx.measureText(text).width,hpx=(fh*line+fh)*lineh ,wk,x
+  ;
+  let sp='漢',t=Array.from({length:blink}).map(d=>sp).join('')
+  wpx=ctx.measureText(t).width
+  ;
+  lcr=lcr||ctx.textAlign
+  lcr=lcr.charAt(0)
+  if(lcr==='l')ctx.textAlign='left',x=fw/2  
+  if(lcr==='c')ctx.textAlign='center',x=w/2
+  if(lcr==='r')ctx.textAlign='right',x=w-fw/2
+  if(blink){
+   ctx.fillStyle=outcolor
+   if(lcr==='l') ctx.fillRect(x-fw,hpx-fh+2,wpx+fw+x,fh)
+   if(lcr==='c') ctx.fillRect(w/2-wpx/2-fw/2,hpx-fh+2,wpx+fw,fh)
+   if(lcr==='r') ctx.fillRect(x-wpx-fw/2,hpx-fh+2,wpx+fw,fh)
+  }
+  //ctx.globalAlpha=0.9  
+  ctx.fillStyle=incolor
+  ctx.fillText(text,x,hpx)
+  return ctx.restore(),ctx.save()
+ } 
+}
+ 
+function makecolor(c,ctx){
+ //makecolor('#502-#904-#502')
+ let color=c,h=ctx.canvas.height
+ if(/#/.test(c)&&/-/.test(c)){
+  let ary=c.split('-'),len=ary.length
+  color=ctx.createLinearGradient(0,0,0,h)
+  if(ary.length===2){
+   color.addColorStop(0,ary[0]);
+   color.addColorStop(1,ary[1]);    
+  }else{
+   color.addColorStop(0,ary[0]);
+   color.addColorStop(0.5,ary[1]);
+   color.addColorStop(1,ary[2]);
+  }
+ }
+ return color
+}
+ 
 })(this); 
 
 //>>>r001
@@ -284,7 +322,7 @@ function inverseObject (obj, keyIsNumber) {
 function KEC(...ary){
 var o=EXP()
 let f=d=>d.charCodeAt(0)
-ary=ary||[38,40,37,39,f('F'),f('D'),f('A'),f('S'),f('Q'),f('R')]
+ary=ary||[38,40,37,39,f('F'),f('D'),f('A'),f('S'),f('Q'),f('E')]
 let map={}
 map['^']=ary[0]||38 //arrow up
 map['v']=ary[1]||40 //arrow down
@@ -295,7 +333,7 @@ map['B']=ary[5]||f('D') //D
 map['X']=ary[6]||f('A') //A
 map['Y']=ary[7]||f('S') //S
 map['L']=ary[8]||f('Q') //Q
-map['R']=ary[9]||f('R') //R
+map['R']=ary[9]||f('E') //E
 
 o.debug('keyconfig',ary,map)//,map,inverseObject(map))
 return map
