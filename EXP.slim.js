@@ -279,7 +279,7 @@ if(!chk)return
 if(/^#/.test(str)){
  o.debug('IFJ hit',str,o.jumps[str])
  //if(o.jumps[str])return o.readline=o.jumps[str]
- if(o.jumps[str])return o.jumpback=o.readline,o.readline=o.jumps[str] //jumpback issue
+ if(o.jumps[str])return $JB=o.jumpback=o.readline,o.readline=o.jumps[str] //jumpback issue //$JB is jumpback
  return;
 }else if(is.number(str)){
  //number
