@@ -10,8 +10,8 @@ var o={}
 o.is=is
 o.root=root //
 o.runtime=performance.now()
-o.w=640
-o.h=(640/16)*9
+//o.w=640
+//o.h=(640/16)*9
 o.waiting=0
 o.readline=0
 o.lines// ary
@@ -23,14 +23,14 @@ o.isend=isend
 o.debug=()=>{ }
 o.callfunc=callfunc
 o.run=run
-o.cash={}
-o.canvas //canvas
-o.ctx //o.canvas.getContext('2d')
-o.offcanvas //o.offcanvas...
-o.offctx
-o.bgm //video class .bgm
-o.se //video class .se
-o.copyImage=o.copyimage=destcolor
+//o.cash={}
+//o.canvas //canvas
+//o.ctx //o.canvas.getContext('2d')
+//o.offcanvas //o.offcanvas...
+//o.offctx
+//o.bgm //video class .bgm
+//o.se //video class .se
+//o.copyImage=o.copyimage=destcolor
 
 function EXP(str){
  if(is.array(str))return run(str[0]) //tag
@@ -45,29 +45,29 @@ root.EXP=EXP
 function run(str){
  var o=EXP()
  valuable(o.root) //r020 $00-$ZZ
- let a=lexsize(str)
- o.w=a.w
- o.h=a.h
+// let a=lexsize(str)
+// o.w=a.w
+// o.h=a.h
  o.lines=lex(str)
  o.jumps=lexjump(o.lines)
  ///
- if(o.canvas){
+// if(o.canvas){
   //キャンバスがある場合はサイズ指定を無効とする。
-  o.w=o.canvas.width,o.h=o.canvas.height
-  o.canvas.style='image-rendering:pixelated;' //拡大時にはドットで。
- }else{
-  o.canvas=gameCanvas(o.w,o.h)  
- }
- o.ctx=o.canvas.getContext('2d') 
- o.se=gameSE()
- o.bgm=gameBGM()
- o.offcanvas=document.createElement('canvas')
- o.offcanvas.width=o.w,o.offcanvas.height=o.h
- o.offctx=o.offcanvas.getContext('2d')
+//  o.w=o.canvas.width,o.h=o.canvas.height
+//  o.canvas.style='image-rendering:pixelated;' //拡大時にはドットで。
+// }else{
+//  o.canvas=gameCanvas(o.w,o.h)  
+// }
+// o.ctx=o.canvas.getContext('2d') 
+// o.se=gameSE()
+// o.bgm=gameBGM()
+// o.offcanvas=document.createElement('canvas')
+// o.offcanvas.width=o.w,o.offcanvas.height=o.h
+// o.offctx=o.offcanvas.getContext('2d')
  ///font
- let fsize=~~(o.h/20)
- o.ctx.font=o.offctx.font=`${fsize}px exp` //r029
- o.ctx.save() //r031
+// let fsize=~~(o.h/20)
+// o.ctx.font=o.offctx.font=`${fsize}px exp` //r029
+// o.ctx.save() //r031
  ///
  o.debug(o)
  o.next(0) 
@@ -283,14 +283,20 @@ function inverseObject (obj, keyIsNumber) {
 //$KEC=KEC(38,40,37,39,13,32)
 function KEC(...ary){
 var o=EXP()
-ary=ary||[87,83,65,68,69,81]
+let f=d=>d.charCodeAt(0)
+ary=ary||[38,40,37,39,f('F'),f('D'),f('A'),f('S'),f('Q'),f('R')]
 let map={}
-map['^']=ary[0]||87 //w
-map['v']=ary[1]||83 //s
-map['<']=ary[2]||65 //a
-map['>']=ary[3]||68 //d
-map['A']=ary[4]||69 //e
-map['B']=ary[5]||81 //q
+map['^']=ary[0]||38 //arrow up
+map['v']=ary[1]||40 //arrow down
+map['<']=ary[2]||37 //arrow left
+map['>']=ary[3]||39 //arrow right
+map['A']=ary[4]||f('F') //F
+map['B']=ary[5]||f('D') //D
+map['X']=ary[6]||f('A') //A
+map['Y']=ary[7]||f('S') //S
+map['L']=ary[8]||f('Q') //Q
+map['R']=ary[9]||f('R') //R
+
 o.debug('keyconfig',ary,map)//,map,inverseObject(map))
 return map
 /*
