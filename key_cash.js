@@ -117,6 +117,35 @@ ell.onerror=()=>{sol(url) }
 }
 
 
+function copyImage(img,color,operation,alpha) {
+ let is={}
+ is.string = function(obj){return toString.call(obj) === '[object String]'}
+
+ const canvas = document.createElement('canvas')
+ const ctx = canvas.getContext('2d');
+ canvas.width = img.width
+ canvas.height = img.height;
+ if(color){
+   alpha=alpha||1
+   operation=operation||'saturation'
+   ctx.globalAlpha=alpha
+  if(is.string(color)){
+   //color
+   ctx.fillStyle = color //makecolor(color,ctx);///r030
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
+   ctx.globalCompositeOperation = operation
+  }else{
+   //image
+   ctx.drawImage(color,0,0,canvas.width,canvas.height)
+   ctx.globalCompositeOperation = operation
+  }
+  ctx.globalAlpha=1
+ }
+ ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+ return canvas;
+}
+
+
 CAS(`
 https://gnjo.github.io/mock3d/bg/blur1.jpg
 https://gnjo.github.io/mock3d/bg/metal1.jpg
