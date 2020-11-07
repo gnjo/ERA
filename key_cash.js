@@ -118,6 +118,8 @@ ell.onerror=()=>{sol(url) }
 
 
 CAS(`
+https://gnjo.github.io/mock3d/bg/metal1.jpg
+
 https://gnjo.github.io/mock3d/bg/bar.jpg
 https://gnjo.github.io/mock3d/bg/castle.jpg
 https://gnjo.github.io/mock3d/bg/city1.jpg
