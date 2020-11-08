@@ -151,6 +151,7 @@ https://gnjo.github.io/mock3d/bg/blur1.jpg
 https://gnjo.github.io/mock3d/bg/metal1.jpg
 https://gnjo.github.io/mock3d/bg/film1.jpg
 https://gnjo.github.io/mock3d/bg/vintage1.jpg
+https://gnjo.github.io/mock3d/bg/laby2.jpg
 
 https://gnjo.github.io/mock3d/bg/bar.jpg
 https://gnjo.github.io/mock3d/bg/castle.jpg
